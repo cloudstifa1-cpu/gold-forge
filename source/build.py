@@ -7,7 +7,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, 'src')
 DIST = os.path.dirname(ROOT)  # repo root (served by GitHub Pages)
 ART = os.path.join(ROOT, 'artifact')
-VERSION = 'gf-v1'
+VERSION = 'gf-v2'
 
 def read(p):
     with open(p, encoding='utf-8') as f:
@@ -34,9 +34,11 @@ BODY = '''<div class="bar"><div class="wrap">
 <noscript><p style="padding:16px">Gold Forge needs JavaScript turned on.</p></noscript>
 '''
 
+SITE = 'https://cloudstifa1-cpu.github.io/gold-forge/'
+DESC = 'Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, glossary, and quizzes.'
 HEAD_COMMON = ('<title>Gold Forge</title>\n'
                '<meta name="claude:viewport-fit-sides" content="cover">\n'
-               '<meta name="description" content="Metallurgy study guide: assaying, extraction, smelting, refining, and metals.">\n')
+               '<meta name="description" content="' + DESC + '">\n')
 
 # ---------- PWA (full document) ----------
 os.makedirs(DIST, exist_ok=True)
@@ -48,6 +50,14 @@ pwa = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
        '<meta name="mobile-web-app-capable" content="yes">\n'
        '<meta name="apple-mobile-web-app-title" content="Gold Forge">\n'
        '<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">\n'
+       '<link rel="canonical" href="' + SITE + '">\n'
+       '<meta property="og:type" content="website">\n'
+       '<meta property="og:title" content="Gold Forge — Metallurgy Study App">\n'
+       '<meta property="og:description" content="' + DESC + '">\n'
+       '<meta property="og:url" content="' + SITE + '">\n'
+       '<meta property="og:image" content="' + SITE + 'icon-512.png">\n'
+       '<meta name="twitter:card" content="summary">\n'
+       '<script type="application/ld+json">' + json.dumps({"@context":"https://schema.org","@type":"WebApplication","name":"Gold Forge","url":SITE,"description":DESC,"applicationCategory":"EducationalApplication","operatingSystem":"Android, iOS, Windows, macOS","isAccessibleForFree":True,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"keywords":"metallurgy, fire assay, gold assay, smelting, refining, extractive metallurgy, heat treatment, study guide"}) + '</script>\n'
        '<link rel="manifest" href="manifest.webmanifest">\n'
        '<link rel="icon" href="icon-192.png" type="image/png">\n'
        '<link rel="apple-touch-icon" href="apple-touch-icon.png">\n'
@@ -58,7 +68,9 @@ with open(os.path.join(DIST, 'index.html'), 'w', encoding='utf-8') as f:
 
 manifest = {
     "name": "Gold Forge", "short_name": "Gold Forge",
-    "description": "Metallurgy study guide: assaying, extraction, smelting, refining, and metals.",
+    "id": "./", "lang": "en", "dir": "ltr", "description": DESC,
+    "categories": ["education", "books", "reference"],
+    "screenshots": [{"src": "screenshots/%d.png" % i, "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow"} for i in range(1, 6)],
     "start_url": "./", "scope": "./", "display": "standalone", "orientation": "portrait",
     "background_color": "#14120E", "theme_color": "#1E1B16",
     "icons": [
@@ -71,7 +83,7 @@ with open(os.path.join(DIST, 'manifest.webmanifest'), 'w') as f:
     json.dump(manifest, f, indent=2)
 
 sw = '''const CACHE='%s';
-const CORE=['./','index.html','manifest.webmanifest','icon-192.png','icon-512.png','icon-maskable-512.png','apple-touch-icon.png'];
+const CORE=['./','index.html','privacy.html','manifest.webmanifest','icon-192.png','icon-512.png','icon-maskable-512.png','apple-touch-icon.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
 self.addEventListener('fetch',e=>{
@@ -143,6 +155,26 @@ Bump `VERSION` in `build.py` so phones pick up the new copy.
 '''
 with open(os.path.join(DIST, 'README.md'), 'w') as f:
     f.write(readme)
+
+# ---------- search & store extras ----------
+with open(os.path.join(DIST, 'robots.txt'), 'w') as f:
+    f.write('User-agent: *\nAllow: /\nSitemap: ' + SITE + 'sitemap.xml\n')
+with open(os.path.join(DIST, 'sitemap.xml'), 'w') as f:
+    f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            '<url><loc>' + SITE + '</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>\n'
+            '<url><loc>' + SITE + 'privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>\n</urlset>\n')
+privacy = '''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gold Forge Privacy Policy</title><style>body{font:18px/1.6 system-ui,sans-serif;max-width:40rem;margin:0 auto;padding:24px 16px;background:#14120E;color:#F7F2E7}a{color:#E3B847}h1{color:#E3B847}</style></head><body>
+<h1>Gold Forge Privacy Policy</h1><p>Last updated: October 2026</p>
+<p>Gold Forge is a free study app. It does not collect, store, sell, or share any personal information.</p>
+<ul><li>No accounts, sign-ups, or logins.</li><li>No ads, analytics, or tracking.</li>
+<li>Settings like text size, saved topics, and your last search are stored only on your own device (browser local storage). They never leave your device, and clearing your browser data deletes them.</li>
+<li>The app loads its fonts from Google Fonts, which receives a normal web request (such as your IP address) when fonts download.</li></ul>
+<p>The app is free for anyone and is suitable for all ages.</p>
+<p>Questions: open an issue at <a href="https://github.com/cloudstifa1-cpu/gold-forge/issues">github.com/cloudstifa1-cpu/gold-forge/issues</a>.</p>
+<p><a href="./">Back to Gold Forge</a></p></body></html>'''
+with open(os.path.join(DIST, 'privacy.html'), 'w') as f:
+    f.write(privacy)
 
 # ---------- artifact preview (no document wrapper) ----------
 os.makedirs(ART, exist_ok=True)

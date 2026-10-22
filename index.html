@@ -5,12 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Gold Forge</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Metallurgy study guide: assaying, extraction, smelting, refining, and metals.">
+<meta name="description" content="Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, glossary, and quizzes.">
 <meta name="theme-color" content="#1E1B16">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Gold Forge">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="canonical" href="https://cloudstifa1-cpu.github.io/gold-forge/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gold Forge — Metallurgy Study App">
+<meta property="og:description" content="Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, glossary, and quizzes.">
+<meta property="og:url" content="https://cloudstifa1-cpu.github.io/gold-forge/">
+<meta property="og:image" content="https://cloudstifa1-cpu.github.io/gold-forge/icon-512.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Gold Forge", "url": "https://cloudstifa1-cpu.github.io/gold-forge/", "description": "Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, glossary, and quizzes.", "applicationCategory": "EducationalApplication", "operatingSystem": "Android, iOS, Windows, macOS", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "keywords": "metallurgy, fire assay, gold assay, smelting, refining, extractive metallurgy, heat treatment, study guide"}</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -40,13 +48,13 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#14120E; --surface:#1E1B16; --sunk:#26221B; --fg:#EFE9DC; --muted:#B3AA97; --line:#3A342A;
+    --bg:#14120E; --surface:#1E1B16; --sunk:#26221B; --fg:#F7F2E7; --muted:#DCD3C0; --line:#3A342A;
     --gold:#E3B847; --gold-soft:#3A2F14; --slag:#9DBACB; --slag-soft:#1C2A31;
     --warn:#F0937F; --warn-soft:#3A1C16; --ok:#8FD19E; --ok-soft:#173022; color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#14120E; --surface:#1E1B16; --sunk:#26221B; --fg:#EFE9DC; --muted:#B3AA97; --line:#3A342A;
+  --bg:#14120E; --surface:#1E1B16; --sunk:#26221B; --fg:#F7F2E7; --muted:#DCD3C0; --line:#3A342A;
   --gold:#E3B847; --gold-soft:#3A2F14; --slag:#9DBACB; --slag-soft:#1C2A31;
   --warn:#F0937F; --warn-soft:#3A1C16; --ok:#8FD19E; --ok-soft:#173022; color-scheme:dark;
 }
@@ -5382,7 +5390,7 @@ function showHome(){
   '<button data-go="quiz">'+ICON.quiz+'Quiz</button>'+
   '<button data-go="saved">'+ICON.saved+'Saved</button></div>'+
   '<p class="label">Sections</p><ul class="rows">'+rows+'</ul>'+
-  '<div class="foot">A study reminder. Follow your instructor, your lab procedures, and each chemical\'s safety data sheet. Values are typical and rounded.</div>');
+  '<div class="foot">A study reminder. Follow your instructor, your lab procedures, and each chemical\'s safety data sheet. Values are typical and rounded. <a href="privacy.html" style="color:inherit">Privacy</a></div>');
 }
 
 function showSection(s){

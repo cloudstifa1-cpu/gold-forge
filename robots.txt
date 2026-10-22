@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cloudstifa1-cpu.github.io/gold-forge/sitemap.xml

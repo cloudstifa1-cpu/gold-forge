@@ -75,7 +75,7 @@ function showHome(){
   '<button data-go="quiz">'+ICON.quiz+'Quiz</button>'+
   '<button data-go="saved">'+ICON.saved+'Saved</button></div>'+
   '<p class="label">Sections</p><ul class="rows">'+rows+'</ul>'+
-  '<div class="foot">A study reminder. Follow your instructor, your lab procedures, and each chemical\'s safety data sheet. Values are typical and rounded.</div>');
+  '<div class="foot">A study reminder. Follow your instructor, your lab procedures, and each chemical\'s safety data sheet. Values are typical and rounded. <a href="privacy.html" style="color:inherit">Privacy</a></div>');
 }
 
 function showSection(s){

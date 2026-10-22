@@ -1,7 +1,47 @@
 {
   "name": "Gold Forge",
   "short_name": "Gold Forge",
-  "description": "Metallurgy study guide: assaying, extraction, smelting, refining, and metals.",
+  "id": "./",
+  "lang": "en",
+  "dir": "ltr",
+  "description": "Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, glossary, and quizzes.",
+  "categories": [
+    "education",
+    "books",
+    "reference"
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/1.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "screenshots/2.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "screenshots/3.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "screenshots/4.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "screenshots/5.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
