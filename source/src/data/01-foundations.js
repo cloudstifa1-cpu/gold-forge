@@ -25,7 +25,7 @@ Most real plants use more than one. A typical gold plant is hydromet (cyanide le
 - **Physical metallurgy** — what happens inside the metal after (structure, alloys, heat treatment, properties)
 - **Mechanical metallurgy** — how metal behaves under force (forming, testing, failure)
 `},
-{t:'How to Use Gold Forge', b:`
+{t:'How to Use Ore to Alloy', b:`
 - Tap a section on the home screen, then a topic.
 - Use **Search** to find any term, metal, mineral, or formula.
 - **A−** and **A+** at the top change the text size. Your choice is remembered.

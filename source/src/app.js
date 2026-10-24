@@ -66,7 +66,7 @@ var ICON={
 
 function showHome(){
   var rows=S.map(function(s,i){return '<li><button data-go="s.'+s.id+'"><span class="n">'+String(i+1).padStart(2,'0')+'</span><span class="tx"><span class="tt">'+esc(s.title)+'</span><span class="sb">'+esc(s.sub)+' · '+s.topics.length+' topics</span></span><span class="ch">›</span></button></li>';}).join('');
-  view('<section class="mark"><div class="stamp"><b>Gold Forge</b><small>FINE · 999.9 · AU</small></div><p>Metallurgy study guide: assaying, extraction, smelting, refining, and the metals themselves.</p></section>'+
+  view('<section class="mark"><div class="stamp"><b>Ore to Alloy</b><small>ASSAY · SMELT · REFINE</small></div><p>Metallurgy study guide: assaying, extraction, smelting, refining, and the metals themselves.</p></section>'+
   '<div class="tools">'+
   '<button data-go="search">'+ICON.search+'Search</button>'+
   '<button data-go="glossary">'+ICON.glossary+'Glossary</button>'+

@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Gold Forge</title>
+<title>Ore to Alloy</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, and a glossary.">
 <meta name="theme-color" content="#1E1B16">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Gold Forge">
+<meta name="apple-mobile-web-app-title" content="Ore to Alloy">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="canonical" href="https://cloudstifa1-cpu.github.io/gold-forge/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Gold Forge — Metallurgy Study App">
+<meta property="og:title" content="Ore to Alloy — Metallurgy Study App">
 <meta property="og:description" content="Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, and a glossary.">
 <meta property="og:url" content="https://cloudstifa1-cpu.github.io/gold-forge/">
 <meta property="og:image" content="https://cloudstifa1-cpu.github.io/gold-forge/icon-512.png">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Gold Forge", "url": "https://cloudstifa1-cpu.github.io/gold-forge/", "description": "Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, and a glossary.", "applicationCategory": "EducationalApplication", "operatingSystem": "Android, iOS, Windows, macOS", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "keywords": "metallurgy, fire assay, gold assay, smelting, refining, extractive metallurgy, heat treatment, study guide"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Ore to Alloy", "url": "https://cloudstifa1-cpu.github.io/gold-forge/", "description": "Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, and a glossary.", "applicationCategory": "EducationalApplication", "operatingSystem": "Android, iOS, Windows, macOS", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "keywords": "metallurgy, fire assay, gold assay, smelting, refining, extractive metallurgy, heat treatment, study guide"}</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -177,11 +177,11 @@ button{cursor:pointer}
 <body>
 <div class="bar"><div class="wrap">
 <button class="back" id="back" aria-label="Back" hidden>‹</button>
-<button class="brand" id="brand" aria-label="Home">Gold <span>Forge</span></button>
+<button class="brand" id="brand" aria-label="Home">Ore to <span>Alloy</span></button>
 <div class="sz"><button id="aminus" aria-label="Smaller text">A−</button><button id="aplus" aria-label="Bigger text">A+</button></div>
 </div></div>
 <main id="app"></main>
-<noscript><p style="padding:16px">Gold Forge needs JavaScript turned on.</p></noscript>
+<noscript><p style="padding:16px">Ore to Alloy needs JavaScript turned on.</p></noscript>
 <script>
 window.GF={sections:[],glossary:[],sec:function(s){this.sections.push(s);}};
 
@@ -212,7 +212,7 @@ Most real plants use more than one. A typical gold plant is hydromet (cyanide le
 - **Physical metallurgy** — what happens inside the metal after (structure, alloys, heat treatment, properties)
 - **Mechanical metallurgy** — how metal behaves under force (forming, testing, failure)
 `},
-{t:'How to Use Gold Forge', b:`
+{t:'How to Use Ore to Alloy', b:`
 - Tap a section on the home screen, then a topic.
 - Use **Search** to find any term, metal, mineral, or formula.
 - **A−** and **A+** at the top change the text size. Your choice is remembered.
@@ -5233,7 +5233,7 @@ var ICON={
 
 function showHome(){
   var rows=S.map(function(s,i){return '<li><button data-go="s.'+s.id+'"><span class="n">'+String(i+1).padStart(2,'0')+'</span><span class="tx"><span class="tt">'+esc(s.title)+'</span><span class="sb">'+esc(s.sub)+' · '+s.topics.length+' topics</span></span><span class="ch">›</span></button></li>';}).join('');
-  view('<section class="mark"><div class="stamp"><b>Gold Forge</b><small>FINE · 999.9 · AU</small></div><p>Metallurgy study guide: assaying, extraction, smelting, refining, and the metals themselves.</p></section>'+
+  view('<section class="mark"><div class="stamp"><b>Ore to Alloy</b><small>ASSAY · SMELT · REFINE</small></div><p>Metallurgy study guide: assaying, extraction, smelting, refining, and the metals themselves.</p></section>'+
   '<div class="tools">'+
   '<button data-go="search">'+ICON.search+'Search</button>'+
   '<button data-go="glossary">'+ICON.glossary+'Glossary</button>'+

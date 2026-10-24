@@ -1,4 +1,4 @@
-# Gold Forge
+# Ore to Alloy
 
 Metallurgy study app: assaying (fire assay), gold recovery from mine to 99.99% bar, extraction and smelting of every major metal, chemistry, alloys, heat treatment, forming, corrosion, safety, and a glossary.
 
