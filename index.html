@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Gold Forge</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, glossary, and quizzes.">
+<meta name="description" content="Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, and a glossary.">
 <meta name="theme-color" content="#1E1B16">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -14,11 +14,11 @@
 <link rel="canonical" href="https://cloudstifa1-cpu.github.io/gold-forge/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Gold Forge — Metallurgy Study App">
-<meta property="og:description" content="Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, glossary, and quizzes.">
+<meta property="og:description" content="Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, and a glossary.">
 <meta property="og:url" content="https://cloudstifa1-cpu.github.io/gold-forge/">
 <meta property="og:image" content="https://cloudstifa1-cpu.github.io/gold-forge/icon-512.png">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Gold Forge", "url": "https://cloudstifa1-cpu.github.io/gold-forge/", "description": "Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, glossary, and quizzes.", "applicationCategory": "EducationalApplication", "operatingSystem": "Android, iOS, Windows, macOS", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "keywords": "metallurgy, fire assay, gold assay, smelting, refining, extractive metallurgy, heat treatment, study guide"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Gold Forge", "url": "https://cloudstifa1-cpu.github.io/gold-forge/", "description": "Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, and a glossary.", "applicationCategory": "EducationalApplication", "operatingSystem": "Android, iOS, Windows, macOS", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "keywords": "metallurgy, fire assay, gold assay, smelting, refining, extractive metallurgy, heat treatment, study guide"}</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -84,7 +84,7 @@ button{cursor:pointer}
 .stamp small{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.18em;margin-top:.25rem}
 .mark p{margin:.8rem 0 0;color:var(--muted);max-width:34rem}
 
-.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;padding-block:.4rem 1rem}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;padding-block:.4rem 1rem}
 .tools button{border:1px solid var(--line);background:var(--surface);border-radius:.6rem;padding:.7rem .3rem;font-weight:700;font-size:.85rem;display:flex;flex-direction:column;align-items:center;gap:.25rem;min-height:4.2rem}
 .tools svg{width:1.5rem;height:1.5rem;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
@@ -183,7 +183,7 @@ button{cursor:pointer}
 <main id="app"></main>
 <noscript><p style="padding:16px">Gold Forge needs JavaScript turned on.</p></noscript>
 <script>
-window.GF={sections:[],glossary:[],quiz:[],sec:function(s){this.sections.push(s);}};
+window.GF={sections:[],glossary:[],sec:function(s){this.sections.push(s);}};
 
 GF.sec({id:'start', title:'Start Here', sub:'How the whole process fits together', topics:[
 {t:'The Big Picture: Ground to Bar', b:`
@@ -217,7 +217,6 @@ Most real plants use more than one. A typical gold plant is hydromet (cyanide le
 - Use **Search** to find any term, metal, mineral, or formula.
 - **A−** and **A+** at the top change the text size. Your choice is remembered.
 - **Glossary** has short definitions of every term.
-- **Quiz** tests you, including putting process steps in the right order.
 - **Saved** keeps topics you star for quick review.
 - Works with no signal once it has been opened one time.
 
@@ -5166,153 +5165,6 @@ GF.glossary=[
 ['Yield strength','Stress where permanent deformation begins.']
 ];
 
-GF.quiz=[
-// why
-{s:'why',q:'Extracting a metal from its oxide ore is called…',a:['Oxidation','Reduction','Sublimation','Hydration'],c:1,e:'The metal ion gains electrons (Reduction Is Gain).'},
-{s:'why',q:'On an Ellingham diagram, the oxide that is hardest to reduce has a line that is…',a:['Highest','Lowest','Steepest','Flattest'],c:1,e:'Lower line = more stable oxide. "Lower wins."'},
-{s:'why',q:'Why can carbon smelt iron but not aluminum?',a:['Aluminum is too heavy','Al₂O₃ is far more stable than iron oxide','Carbon dissolves in aluminum','Aluminum boils too low'],c:1,e:'Al₂O₃ sits far down the Ellingham diagram; carbon can\'t take its oxygen at practical temperatures.'},
-{s:'why',q:'Which crystal structure is gold?',a:['BCC','HCP','FCC','Tetragonal'],c:2,e:'FCC — many slip planes, very ductile.'},
-{s:'why',q:'Austenite is…',a:['BCC iron with little carbon','FCC iron that holds up to about 2.1% carbon','Iron carbide','Layered ferrite and cementite'],c:1,e:'FCC γ-iron dissolves much more carbon than ferrite.'},
-{s:'why',q:'The eutectoid point in steel is at…',a:['0.76% C, 727 °C','4.3% C, 1147 °C','2.1% C, 912 °C','0.02% C, 770 °C'],c:0,e:'Austenite → pearlite at 727 °C and 0.76% C.'},
-{s:'why',q:'At the anode of a cell, what happens?',a:['Reduction','Oxidation','Nothing','Metal plates out'],c:1,e:'"An Ox, Red Cat" — Anode Oxidation, Reduction Cathode.'},
-{s:'why',q:'About how much gold can 1 amp-hour deposit from cyanide solution at 100% efficiency?',a:['1.2 g','4.0 g','7.35 g','19.3 g'],c:2,e:'Au⁺ needs one electron: 3600 C ÷ 96,485 × 196.97 ≈ 7.35 g.'},
-{s:'why',q:'Every metal strengthening method works by…',a:['Adding oxygen','Blocking dislocation movement','Making grains bigger','Raising density'],c:1,e:'Grain refinement, cold work, alloying, precipitates, martensite — all block dislocations.'},
-{s:'why',q:'Cyanide leaching must stay at about pH…',a:['2–3','6–7','10–11','13–14'],c:2,e:'Below about pH 9.2, cyanide forms deadly HCN gas.'},
-// props
-{s:'props',q:'Hardness is resistance to…',a:['Breaking under impact','Indentation or scratching','Stretching','Electrical flow'],c:1,e:'Localized plastic deformation — a surface property.'},
-{s:'props',q:'Toughness is best measured by…',a:['Rockwell test','Charpy impact test','Mohs scale','Conductivity'],c:1,e:'Energy absorbed by a notched bar.'},
-{s:'props',q:'Which Rockwell scale is used for hardened steel?',a:['HRB','HRC','HRA only','HV'],c:1,e:'HRC uses a diamond cone and 150 kgf.'},
-{s:'props',q:'Native gold has a Mohs hardness of about…',a:['2.5–3','5.5','6–6.5','9'],c:0,e:'Soft — a knife cuts it. Pyrite is 6–6.5.'},
-{s:'props',q:'Which metal is the best electrical conductor?',a:['Copper','Gold','Silver','Aluminum'],c:2,e:'Silver, then copper, gold, aluminum.'},
-{s:'props',q:'Ductile fracture looks like…',a:['A flat shiny break','A cup-and-cone with necking','A rusty break','A clean 45° cut'],c:1,e:'Cup-and-cone with dull fibrous surface.'},
-// assay
-{s:'assay',q:'One assay ton weighs…',a:['28.35 g','29.167 g','31.1035 g','30.000 g'],c:1,e:'Chosen so mg of gold = troy oz per short ton.'},
-{s:'assay',q:'In fire assay, what collects the gold?',a:['Borax','Silica','Lead','Soda ash'],c:2,e:'Lead from litharge sinks through the slag and dissolves gold and silver.'},
-{s:'assay',q:'What is the job of flour in the assay flux?',a:['Oxidizer','Reducing agent to make lead','Acid flux','Cover'],c:1,e:'Carbon reduces PbO to Pb; more flour = bigger button.'},
-{s:'assay',q:'Niter (KNO₃) is added to a fire assay charge when the ore…',a:['Has lots of sulfides','Is pure quartz','Has coarse gold','Is wet'],c:0,e:'Sulfides reduce too much lead; niter oxidizes them.'},
-{s:'assay',q:'A cupel is made of…',a:['Graphite','Bone ash or magnesia','Fire clay','Steel'],c:1,e:'Porous material that absorbs lead oxide.'},
-{s:'assay',q:'Why is silver added (inquartation)?',a:['To make the bead heavier to weigh','So nitric acid can dissolve the silver out during parting','To lower the melting point of slag','To color the bead'],c:1,e:'Too little silver and gold shields it from the acid.'},
-{s:'assay',q:'Which acid parts silver from gold?',a:['Hydrochloric','Sulfuric','Nitric','Hydrofluoric'],c:2,e:'Nitric dissolves silver but not gold.'},
-{s:'assay',q:'0.30 mg of gold from a 30 g charge is how many g/t?',a:['0.1 g/t','1.0 g/t','10 g/t','100 g/t'],c:2,e:'0.30 ÷ 30 × 1000 = 10 g/t.'},
-{s:'assay',q:'Feathers of PbO crystals on the cupel rim mean…',a:['Furnace too hot','Temperature about right','Button frozen','Bead is copper'],c:1,e:'Feathering shows a cool-enough cupellation (less loss).'},
-{s:'assay',q:'Samples are commonly pulverized to about 85% passing…',a:['2 mm','75 µm','1 mm','10 µm'],c:1,e:'About 200 mesh before taking the assay charge.'},
-{s:'assay',q:'What is a blank used for in QA/QC?',a:['Checking accuracy','Checking contamination','Checking precision','Calibrating the balance'],c:1,e:'Barren material should assay near zero.'},
-{s:'assay',q:'1 troy oz per short ton equals about…',a:['31.1 g/t','34.3 g/t','28.3 g/t','1 g/t'],c:1,e:'31.1035 g ÷ 0.907 t = 34.29 g/t.'},
-// gold
-{s:'gold',q:'In the Elsner equation, what is the oxidizer?',a:['Cyanide','Oxygen','Lime','Zinc'],c:1,e:'O₂ from air oxidizes gold; cyanide holds it in solution.'},
-{s:'gold',q:'Dissolved gold in cyanide is the ion…',a:['AuCl₄⁻','Au(CN)₂⁻','Au³⁺','AuS⁻'],c:1,e:'Dicyanoaurate (aurocyanide).'},
-{s:'gold',q:'CIL differs from CIP because in CIL…',a:['No cyanide is used','Carbon is in the leach tanks','Zinc replaces carbon','Ore is roasted'],c:1,e:'Leaching and adsorption happen together.'},
-{s:'gold',q:'Merrill-Crowe precipitates gold with…',a:['Activated carbon','Zinc dust','Iron filings','Sodium metabisulfite'],c:1,e:'Zinc cementation after clarifying and deaerating.'},
-{s:'gold',q:'Why deaerate solution before Merrill-Crowe?',a:['To cool it','Oxygen would redissolve gold and waste zinc','To raise pH','To remove cyanide'],c:1,e:'Vacuum tower removes dissolved oxygen.'},
-{s:'gold',q:'Elution strips gold from carbon using…',a:['Cold water','Hot caustic cyanide solution','Nitric acid','Mercury'],c:1,e:'Heat and high pH reverse the adsorption.'},
-{s:'gold',q:'Ore that steals dissolved gold back is called…',a:['Free-milling','Preg-robbing','Placer','Oxide'],c:1,e:'Natural carbon adsorbs Au(CN)₂⁻.'},
-{s:'gold',q:'Which pre-treatment uses an autoclave?',a:['Roasting','Pressure oxidation','Bio-oxidation','Gravity'],c:1,e:'POX at about 190–230 °C with oxygen pressure.'},
-{s:'gold',q:'Which flux is the oxidizer in doré smelting?',a:['Borax','Silica','Niter','Fluorspar'],c:2,e:'Niter oxidizes base metals into the slag.'},
-{s:'gold',q:'The Miller process refines gold with…',a:['Chlorine gas','Electrolysis','Cyanide','Nitric acid'],c:0,e:'Silver and base metals form chlorides; gold reaches about 99.5%.'},
-{s:'gold',q:'The Wohlwill process produces gold of about…',a:['90%','99.5%','99.99%','75%'],c:2,e:'Electrolytic refining in HAuCl₄/HCl.'},
-{s:'gold',q:'18K gold is what percent gold?',a:['58.3%','75%','91.7%','99.9%'],c:1,e:'18 ÷ 24 = 0.75.'},
-{s:'gold',q:'A troy ounce is…',a:['28.35 g','31.1035 g','29.167 g','1.555 g'],c:1,e:'Precious metal standard.'},
-{s:'gold',q:'Mercury boils at about…',a:['100 °C','357 °C','907 °C','1064 °C'],c:1,e:'That\'s why retorts can distill it off gold.'},
-// extract
-{s:'extract',q:'In a blast furnace, the main reducing gas is…',a:['CO₂','CO','O₂','N₂'],c:1,e:'CO forms from CO₂ + C and reduces iron oxide.'},
-{s:'extract',q:'Limestone in the blast furnace acts as…',a:['Fuel','Reducer','Flux','Catalyst'],c:2,e:'Becomes CaO, which slags the silica.'},
-{s:'extract',q:'Blast furnace hot metal contains about how much carbon?',a:['0.1%','1%','4–4.5%','10%'],c:2,e:'Steelmaking removes most of it.'},
-{s:'extract',q:'Copper concentrate is smelted first into…',a:['Blister copper','Matte','Cathode','Doré'],c:1,e:'Matte is molten Cu₂S·FeS.'},
-{s:'extract',q:'In copper electrorefining, gold and silver end up in…',a:['The cathode','Anode slime','The electrolyte','The slag'],c:1,e:'Noble metals don\'t dissolve; they fall as slime.'},
-{s:'extract',q:'Alumina is dissolved for electrolysis in molten…',a:['Borax','Cryolite','Salt','Lime'],c:1,e:'Na₃AlF₆ at about 950–960 °C.'},
-{s:'extract',q:'The Kroll process reduces TiCl₄ with…',a:['Carbon','Hydrogen','Magnesium','Aluminum'],c:2,e:'TiCl₄ + 2Mg → Ti + 2MgCl₂.'},
-{s:'extract',q:'Zinc dust is added to zinc electrolyte to…',a:['Raise pH','Remove copper and cadmium by cementation','Add oxygen','Make slag'],c:1,e:'More noble metals plate onto the zinc dust.'},
-{s:'extract',q:'The Parkes process uses zinc to remove ___ from lead.',a:['Copper','Silver and gold','Antimony','Bismuth'],c:1,e:'Precious metals prefer zinc; the crust is skimmed.'},
-{s:'extract',q:'Tungsten oxide is reduced to metal with…',a:['Coke','Hydrogen','Zinc','Electrolysis of brine'],c:1,e:'WO₃ + 3H₂ → W + 3H₂O.'},
-{s:'extract',q:'Roasting a sulfide in air produces an oxide and…',a:['CO₂','SO₂','H₂S','Cl₂'],c:1,e:'2ZnS + 3O₂ → 2ZnO + 2SO₂.'},
-{s:'extract',q:'Froth flotation separates minerals by…',a:['Density','Magnetism','Surface water-repellency','Color'],c:2,e:'Hydrophobic particles stick to bubbles.'},
-{s:'extract',q:'Nickel carbonyl is used in which refining process?',a:['Mond','Bayer','Kroll','Miller'],c:0,e:'Ni + 4CO ⇌ Ni(CO)₄.'},
-// materials
-{s:'materials',q:'Silica-rich (acid) gangue needs which kind of flux?',a:['Acid','Basic','Neutral','None'],c:1,e:'"Acid rock needs a Base."'},
-{s:'materials',q:'Which flux mainly thins (makes fluid) a slag?',a:['Fluorspar','Niter','Litharge','Coke'],c:0,e:'CaF₂ — "Fluorspar makes slag Flow."'},
-{s:'materials',q:'Basic slags should be held in which refractory?',a:['Silica brick','Magnesia brick','Fire clay','Glass'],c:1,e:'Match the refractory to the slag chemistry.'},
-{s:'materials',q:'Chalcopyrite\'s formula is…',a:['Cu₂S','CuFeS₂','FeS₂','Cu₂O'],c:1,e:'About 34.6% copper.'},
-{s:'materials',q:'Galena is the ore of…',a:['Zinc','Lead','Tin','Silver only'],c:1,e:'PbS.'},
-{s:'materials',q:'Cassiterite is the ore of…',a:['Tin','Titanium','Tungsten','Copper'],c:0,e:'SnO₂.'},
-// chem
-{s:'chem',q:'Aqua regia is…',a:['3 HNO₃ : 1 HCl','3 HCl : 1 HNO₃','1 H₂SO₄ : 1 HCl','HF + HNO₃'],c:1,e:'"3 to 1, the King is done."'},
-{s:'chem',q:'Which chemical is used in the Bayer process?',a:['HCl','NaOH','NaCN','H₂SO₄'],c:1,e:'Hot caustic soda dissolves aluminum hydroxide.'},
-{s:'chem',q:'Fe₂O₃ is named…',a:['Iron(II) oxide','Iron(III) oxide','Iron sulfide','Magnetite'],c:1,e:'Each iron is +3.'},
-{s:'chem',q:'CuSO₄ is used in flotation as…',a:['A collector','An activator','A frother','A depressant'],c:1,e:'Activates sphalerite and pyrite.'},
-{s:'chem',q:'ZnCl₂ is mostly used as…',a:['Soldering/galvanizing flux','Gold leach','Abrasive','Fuel'],c:0,e:'Cleans oxide so solder or zinc wets the steel.'},
-{s:'chem',q:'When diluting acid, you should…',a:['Add water to acid','Add acid to water','Mix fast','Use hot water'],c:1,e:'"Do what you oughta, add acid to water."'},
-{s:'chem',q:'Which reagent precipitates gold from aqua regia solution?',a:['Sodium metabisulfite (SO₂)','Nitric acid','Lime','Borax'],c:0,e:'Reduces AuCl₄⁻ to gold metal.'},
-{s:'chem',q:'Al₂O₃ is useful as an abrasive because its Mohs hardness is…',a:['3','5','9','10'],c:2,e:'Corundum = 9.'},
-// alloys
-{s:'alloys',q:'AISI 1045 steel contains about how much carbon?',a:['10.45%','4.5%','0.45%','0.045%'],c:2,e:'Last two digits = hundredths of a percent.'},
-{s:'alloys',q:'Stainless steel needs at least how much chromium?',a:['5%','10.5%','18%','25%'],c:1,e:'Forms a passive Cr₂O₃ film.'},
-{s:'alloys',q:'316 stainless differs from 304 by adding…',a:['Nickel','Molybdenum','Carbon','Titanium'],c:1,e:'2–3% Mo improves chloride pitting resistance.'},
-{s:'alloys',q:'Brass is copper plus…',a:['Tin','Zinc','Nickel','Aluminum'],c:1,e:'Bronze is copper plus tin.'},
-{s:'alloys',q:'In aluminum, the 6xxx series is alloyed with…',a:['Copper','Zinc','Magnesium + silicon','Manganese'],c:2,e:'6061, 6063 — heat-treatable, extrudes well.'},
-{s:'alloys',q:'The most common titanium alloy is…',a:['Ti-6Al-4V','Ti-3Mo','CP Grade 1','Ti-Ni'],c:0,e:'About half of titanium use.'},
-{s:'alloys',q:'Ductile iron gets its round graphite from adding…',a:['Chromium','Magnesium','Sulfur','Lead'],c:1,e:'Mg (or cerium) makes nodules.'},
-{s:'alloys',q:'Sterling silver is…',a:['99.9% Ag','92.5% Ag + 7.5% Cu','90% Ag + 10% Ni','75% Ag'],c:1,e:'Stamped 925.'},
-{s:'alloys',q:'Which tool steel letter means air-hardening?',a:['W','O','A','S'],c:2,e:'A2 is a common air-hardening tool steel.'},
-// heat
-{s:'heat',q:'Annealing steel ends with…',a:['Water quench','Slow furnace cool','Air cool','Oil quench'],c:1,e:'Slowest cooling = softest.'},
-{s:'heat',q:'Normalizing ends with…',a:['Furnace cool','Still-air cool','Brine quench','Freezing'],c:1,e:'"Normal people cool off in the Air."'},
-{s:'heat',q:'Quenching steel forms…',a:['Pearlite','Ferrite','Martensite','Cementite only'],c:2,e:'Carbon trapped in a BCT lattice.'},
-{s:'heat',q:'Tempering is done…',a:['Above A3','Below A1','Above melting','At −196 °C only'],c:1,e:'Usually 150–650 °C.'},
-{s:'heat',q:'A dark blue temper color means roughly…',a:['200 °C','240 °C','290–300 °C','600 °C'],c:2,e:'Spring temper.'},
-{s:'heat',q:'6061-T6 means solution treated and…',a:['Naturally aged','Artificially aged','Annealed','Strain hardened'],c:1,e:'T4 = natural aging; T6 = artificial.'},
-{s:'heat',q:'Which case hardening needs no quench?',a:['Carburizing','Nitriding','Induction hardening','Flame hardening'],c:1,e:'Done at about 500–550 °C, below A1.'},
-{s:'heat',q:'Hardenability is increased by…',a:['Alloying with Cr, Mo, Mn, Ni','Lower carbon','Coarser grains only','Faster heating'],c:0,e:'Alloys push the TTT nose to the right.'},
-// forming
-{s:'forming',q:'Cold working a metal makes it…',a:['Softer','Stronger and less ductile','Lighter','Non-magnetic'],c:1,e:'Work hardening — dislocations tangle.'},
-{s:'forming',q:'Lost-wax casting is also called…',a:['Die casting','Sand casting','Investment casting','Continuous casting'],c:2,e:'Used for jewelry and turbine blades.'},
-{s:'forming',q:'Why are forgings stronger than castings?',a:['They are heavier','Grain flow follows the part and porosity is closed','They contain more carbon','They are plated'],c:1,e:'Better fatigue and impact resistance.'},
-{s:'forming',q:'TIG welding uses an electrode made of…',a:['Copper','Tungsten','Carbon','Steel'],c:1,e:'Non-consumable tungsten with argon shielding.'},
-{s:'forming',q:'Brazing filler melts…',a:['Below 450 °C','Above 450 °C but below the base metal','Above the base metal','At room temperature'],c:1,e:'Soldering is below 450 °C.'},
-// corrosion
-{s:'corrosion',q:'In galvanic corrosion, which metal corrodes?',a:['The more noble one','The more active one','Both equally','Neither'],c:1,e:'The active metal becomes the anode.'},
-{s:'corrosion',q:'Zinc protects steel in galvanizing because zinc…',a:['Is harder','Is more active and corrodes first','Is noble','Is non-magnetic'],c:1,e:'Sacrificial protection plus barrier.'},
-{s:'corrosion',q:'Hot-dip galvanizing baths run at about…',a:['200 °C','450 °C','700 °C','1064 °C'],c:1,e:'Zinc melts at 419.5 °C.'},
-{s:'corrosion',q:'In anodizing, the aluminum part is the…',a:['Cathode','Anode','Electrolyte','Seal'],c:1,e:'Oxide grows on the anode.'},
-{s:'corrosion',q:'Chlorides most often cause which corrosion in stainless?',a:['Uniform','Pitting','Dezincification','Graphitization'],c:1,e:'Breaks down the passive film locally.'},
-{s:'corrosion',q:'Which is the most active metal in the galvanic series?',a:['Gold','Steel','Magnesium','Copper'],c:2,e:'"Magnesium Moves, Gold Stays."'},
-{s:'corrosion',q:'Stress corrosion cracking needs…',a:['Only stress','Only chemicals','Tensile stress + specific environment + susceptible metal','Heat only'],c:2,e:'All three together.'},
-// apps
-{s:'apps',q:'Catalytic converters mainly use…',a:['Gold and silver','Platinum, palladium, rhodium','Copper and zinc','Titanium'],c:1,e:'Largest use of PGMs.'},
-{s:'apps',q:'Jet engine turbine blades are made of…',a:['Aluminum','Nickel superalloys','Brass','Mild steel'],c:1,e:'Keep strength above 1000 °C.'},
-{s:'apps',q:'Which metal is best for seawater heat exchangers?',a:['Mild steel','Cupronickel','Magnesium','Zinc'],c:1,e:'Also titanium and super duplex.'},
-// metals
-{s:'metals',q:'Which metal has nearly the same density as gold?',a:['Lead','Tungsten','Silver','Platinum'],c:1,e:'19.25 vs 19.32 — used in fake gold bars.'},
-{s:'metals',q:'Which metal is liquid at room temperature?',a:['Gallium','Mercury','Cesium','Bismuth'],c:1,e:'Mercury melts at −38.8 °C.'},
-{s:'metals',q:'Which metal has the highest melting point?',a:['Platinum','Molybdenum','Tungsten','Titanium'],c:2,e:'3422 °C.'},
-{s:'metals',q:'The lightest metal is…',a:['Magnesium','Aluminum','Lithium','Beryllium'],c:2,e:'0.534 g/cm³ — floats on water.'},
-{s:'metals',q:'Most silver is produced as…',a:['Native silver nuggets','A by-product of Pb, Zn, Cu, and Au mining','Seawater extraction','Recycled film only'],c:1,e:'About 70% is by-product.'},
-{s:'metals',q:'Which metal expands when it freezes?',a:['Lead','Bismuth','Copper','Zinc'],c:1,e:'About 3% — like water.'},
-{s:'metals',q:'Fool\'s gold is…',a:['Chalcopyrite','Pyrite','Galena','Mica'],c:1,e:'FeS₂ — hard, brittle, greenish-black streak.'},
-{s:'metals',q:'Molybdenite is often recovered as a by-product of…',a:['Gold mines','Porphyry copper mines','Coal mines','Bauxite mines'],c:1,e:'Floated separately from the copper concentrate.'},
-{s:'workout',q:'A very reactive metal like magnesium is best produced by…',a:['Carbon smelting','Electrolysis or metallothermic reduction','Panning','Cyanidation'],c:1,e:'It sits near the bottom of the Ellingham diagram.'},
-{s:'workout',q:'Which assay method best measures low-level gold?',a:['Handheld XRF','Fire assay with AAS finish','Streak test','Spark test'],c:1,e:'FA-AAS is the exploration standard.'},
-{s:'workout',q:'A sulfide ore is usually first…',a:['Leached with cyanide','Concentrated by flotation','Sent straight to electrolysis','Calcined to carbonate'],c:1,e:'Then roasted or matte smelted.'},
-{s:'safety',q:'Molten metal + water causes…',a:['Faster cooling only','A steam explosion','No reaction','Slag'],c:1,e:'Dry and preheat everything.'},
-{s:'safety',q:'Which extinguisher class is for burning magnesium?',a:['A','B','C','D'],c:3,e:'Class D or dry sand; never water.'},
-{s:'safety',q:'Cyanide + acid makes…',a:['Harmless salt','HCN gas','Oxygen','Chlorine'],c:1,e:'Keep cyanide above pH 10.5.'},
-// order questions
-{s:'extract',type:'order',q:'Put the basic extraction steps in order.',steps:['Mining','Crushing & grinding','Concentration','Smelting','Refining','Casting']},
-{s:'assay',type:'order',q:'Put the fire assay steps in order.',steps:['Weigh sample and flux','Fusion in a crucible','Pour and break off slag','Cupellation','Parting with nitric acid','Weigh the gold']},
-{s:'assay',type:'order',q:'Put sample preparation in order.',steps:['Dry','Crush','Split','Pulverize','Take the assay charge']},
-{s:'gold',type:'order',q:'Put the CIL gold plant steps in order.',steps:['Grind','Leach with cyanide and carbon','Elute loaded carbon','Electrowin','Smelt to doré','Refine']},
-{s:'gold',type:'order',q:'Put Merrill-Crowe steps in order.',steps:['Clarify solution','Deaerate','Add zinc dust','Filter precipitate','Smelt']},
-{s:'gold',type:'order',q:'Put elution steps in order.',steps:['Acid wash','Rinse','Caustic cyanide pre-soak','Hot elution','Electrowinning','Regenerate carbon in kiln']},
-{s:'extract',type:'order',q:'Put copper sulfide processing in order.',steps:['Flotation','Flash smelting to matte','Converting to blister','Fire refining to anodes','Electrorefining to cathode']},
-{s:'extract',type:'order',q:'Put the zinc RLE steps in order.',steps:['Roast','Acid leach','Purify with zinc dust','Electrowin','Melt and cast']},
-{s:'extract',type:'order',q:'Put the Kroll process in order.',steps:['Chlorinate TiO₂ to TiCl₄','Distill TiCl₄','Reduce with magnesium','Vacuum distill sponge','Vacuum arc remelt']},
-{s:'heat',type:'order',q:'Put hardening steel in order.',steps:['Austenitize','Soak','Quench','Temper']},
-{s:'heat',type:'order',q:'Put precipitation hardening in order.',steps:['Solution treat','Quench','Age']},
-{s:'corrosion',type:'order',q:'Put hot-dip galvanizing in order.',steps:['Degrease','Pickle in acid','Flux','Dip in molten zinc','Cool and inspect']},
-{s:'corrosion',type:'order',q:'Put anodizing in order.',steps:['Clean','Etch','Desmut','Anodize','Dye (optional)','Seal']},
-{s:'props',type:'order',q:'Put the stress-strain curve stages in order.',steps:['Elastic region','Yield point','Strain hardening','Ultimate tensile strength','Necking','Fracture']},
-{s:'forming',type:'order',q:'Put investment (lost-wax) casting in order.',steps:['Make wax pattern','Build wax tree','Coat in ceramic','Melt out wax','Pour metal','Break off shell']}
-];
-
 (function(){
 'use strict';
 var S=GF.sections, byId={};
@@ -5369,7 +5221,6 @@ function route(){
   if(p[0]==='t'&&byId[p[1]])return showTopic(byId[p[1]],parseInt(p[2],10)||0);
   if(p[0]==='search')return showSearch();
   if(p[0]==='glossary')return showGlossary();
-  if(p[0]==='quiz')return showQuiz();
   if(p[0]==='saved')return showSaved();
   showHome();
 }
@@ -5377,7 +5228,6 @@ function route(){
 var ICON={
  search:'<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>',
  glossary:'<svg viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3z"/><path d="M5 17a3 3 0 013-3h11"/></svg>',
- quiz:'<svg viewBox="0 0 24 24"><path d="M9 9a3 3 0 115 2c-1 .7-2 1.3-2 3"/><circle cx="12" cy="18" r=".6"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>',
  saved:'<svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>'
 };
 
@@ -5387,7 +5237,6 @@ function showHome(){
   '<div class="tools">'+
   '<button data-go="search">'+ICON.search+'Search</button>'+
   '<button data-go="glossary">'+ICON.glossary+'Glossary</button>'+
-  '<button data-go="quiz">'+ICON.quiz+'Quiz</button>'+
   '<button data-go="saved">'+ICON.saved+'Saved</button></div>'+
   '<p class="label">Sections</p><ul class="rows">'+rows+'</ul>'+
   '<div class="foot">A study reminder. Follow your instructor, your lab procedures, and each chemical\'s safety data sheet. Values are typical and rounded. <a href="privacy.html" style="color:inherit">Privacy</a></div>');
@@ -5455,54 +5304,6 @@ function showGlossary(){
       .map(function(e){return '<dt id="g-'+e[0][0].toUpperCase()+'">'+esc(e[0])+'</dt><dd>'+esc(e[1])+'</dd>';}).join('')||'<p class="empty">No terms match.</p>';}
   gq.oninput=draw;draw();
   app.querySelectorAll('[data-l]').forEach(function(b){b.onclick=function(){gq.value='';draw();var t=document.getElementById('g-'+b.dataset.l);if(t)t.scrollIntoView({behavior:'smooth',block:'start'});};});
-}
-
-/* ---------- quiz ---------- */
-function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
-var qState=null, qPick=load('qpick','all');
-function showQuiz(){
-  var secs=S.filter(function(s){return GF.quiz.some(function(q){return q.s===s.id;});});
-  var opts='<option value="all">All sections</option>'+secs.map(function(s){return '<option value="'+s.id+'"'+(qPick===s.id?' selected':'')+'>'+esc(s.title)+'</option>';}).join('');
-  view('<header class="head"><h1>Quiz</h1><p>Ten questions at a time, including step-order questions.</p></header><label class="label" for="qsec" style="display:block">Section</label><select class="field" id="qsec" style="margin-top:0">'+opts+'</select><div id="qz"></div>');
-  var sel=document.getElementById('qsec'); sel.onchange=function(){qPick=sel.value;save('qpick',qPick);start();};
-  start();
-}
-function start(){
-  var pool=GF.quiz.filter(function(q){return qPick==='all'||q.s===qPick;});
-  qState={qs:shuffle(pool).slice(0,10),i:0,score:0};
-  ask();
-}
-function ask(){
-  var box=document.getElementById('qz'); if(!box)return;
-  var st=qState, q=st.qs[st.i];
-  if(!q){box.innerHTML='<div class="qcard"><p class="label">Result</p><div class="score">'+st.score+' / '+st.qs.length+'</div><p>'+(st.score===st.qs.length?'Perfect score.':st.score>=st.qs.length*0.7?'Solid. Review the ones you missed.':'Keep studying the sections you missed, then try again.')+'</p><button class="next" id="again">New quiz</button></div>';
-    document.getElementById('again').onclick=start;return;}
-  var meta='<div class="qmeta"><span>Question '+(st.i+1)+' of '+st.qs.length+'</span><span>Score '+st.score+'</span></div>';
-  if(q.type==='order'){
-    var picked=[], opts=shuffle(q.steps);
-    box.innerHTML='<div class="qcard">'+meta+'<p class="qq">'+esc(q.q)+'</p><p class="ordhint">Tap the steps in order.</p><ol class="ord" id="ord"></ol><div class="opts" id="opts">'+opts.map(function(o,i){return '<button data-i="'+i+'">'+esc(o)+'</button>';}).join('')+'</div><button class="ghost" id="undo">Undo last</button><div id="fb"></div></div>';
-    var ord=document.getElementById('ord');
-    function draw(){ord.innerHTML=picked.map(function(i){return '<li>'+esc(opts[i])+'</li>';}).join('');
-      box.querySelectorAll('#opts button').forEach(function(b){b.hidden=picked.indexOf(+b.dataset.i)>=0;});}
-    box.querySelectorAll('#opts button').forEach(function(b){b.onclick=function(){picked.push(+b.dataset.i);draw();if(picked.length===opts.length)check();};});
-    document.getElementById('undo').onclick=function(){picked.pop();draw();};
-    function check(){
-      var ok=true;ord.querySelectorAll('li').forEach(function(li,n){var r=opts[picked[n]]===q.steps[n];if(!r)ok=false;li.className=r?'right':'wrong';});
-      document.getElementById('undo').hidden=true;
-      if(ok)st.score++;
-      document.getElementById('fb').innerHTML='<div class="fb '+(ok?'ok':'no')+'"><b>'+(ok?'Correct order':'Correct order is')+'</b>'+(ok?'':'<ol>'+q.steps.map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ol>')+'</div><button class="next" id="nx">Next question</button>';
-      document.getElementById('nx').onclick=function(){st.i++;ask();};
-    }
-    return;
-  }
-  var order=shuffle(q.a.map(function(_,i){return i;}));
-  box.innerHTML='<div class="qcard">'+meta+'<p class="qq">'+esc(q.q)+'</p><div class="opts">'+order.map(function(i){return '<button data-i="'+i+'">'+esc(q.a[i])+'</button>';}).join('')+'</div><div id="fb"></div></div>';
-  box.querySelectorAll('.opts button').forEach(function(b){b.onclick=function(){
-    var pick=+b.dataset.i, ok=pick===q.c; if(ok)st.score++;
-    box.querySelectorAll('.opts button').forEach(function(x){x.disabled=true;if(+x.dataset.i===q.c)x.classList.add('right');else if(x===b)x.classList.add('wrong');});
-    document.getElementById('fb').innerHTML='<div class="fb '+(ok?'ok':'no')+'"><b>'+(ok?'Correct':'Not quite — answer: '+esc(q.a[q.c]))+'</b>'+esc(q.e||'')+'</div><button class="next" id="nx">'+(st.i+1<st.qs.length?'Next question':'See score')+'</button>';
-    document.getElementById('nx').onclick=function(){st.i++;ask();};
-  };});
 }
 
 /* ---------- delegated navigation ---------- */

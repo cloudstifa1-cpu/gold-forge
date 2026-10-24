@@ -1,6 +1,6 @@
 # Gold Forge
 
-Metallurgy study app: assaying (fire assay), gold recovery from mine to 99.99% bar, extraction and smelting of every major metal, chemistry, alloys, heat treatment, forming, corrosion, safety, glossary, and quizzes.
+Metallurgy study app: assaying (fire assay), gold recovery from mine to 99.99% bar, extraction and smelting of every major metal, chemistry, alloys, heat treatment, forming, corrosion, safety, and a glossary.
 
 Works on Android, iPhone, and desktop. Installs to the home screen and works offline after the first visit.
 

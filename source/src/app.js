@@ -54,7 +54,6 @@ function route(){
   if(p[0]==='t'&&byId[p[1]])return showTopic(byId[p[1]],parseInt(p[2],10)||0);
   if(p[0]==='search')return showSearch();
   if(p[0]==='glossary')return showGlossary();
-  if(p[0]==='quiz')return showQuiz();
   if(p[0]==='saved')return showSaved();
   showHome();
 }
@@ -62,7 +61,6 @@ function route(){
 var ICON={
  search:'<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>',
  glossary:'<svg viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3z"/><path d="M5 17a3 3 0 013-3h11"/></svg>',
- quiz:'<svg viewBox="0 0 24 24"><path d="M9 9a3 3 0 115 2c-1 .7-2 1.3-2 3"/><circle cx="12" cy="18" r=".6"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>',
  saved:'<svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>'
 };
 
@@ -72,7 +70,6 @@ function showHome(){
   '<div class="tools">'+
   '<button data-go="search">'+ICON.search+'Search</button>'+
   '<button data-go="glossary">'+ICON.glossary+'Glossary</button>'+
-  '<button data-go="quiz">'+ICON.quiz+'Quiz</button>'+
   '<button data-go="saved">'+ICON.saved+'Saved</button></div>'+
   '<p class="label">Sections</p><ul class="rows">'+rows+'</ul>'+
   '<div class="foot">A study reminder. Follow your instructor, your lab procedures, and each chemical\'s safety data sheet. Values are typical and rounded. <a href="privacy.html" style="color:inherit">Privacy</a></div>');
@@ -140,54 +137,6 @@ function showGlossary(){
       .map(function(e){return '<dt id="g-'+e[0][0].toUpperCase()+'">'+esc(e[0])+'</dt><dd>'+esc(e[1])+'</dd>';}).join('')||'<p class="empty">No terms match.</p>';}
   gq.oninput=draw;draw();
   app.querySelectorAll('[data-l]').forEach(function(b){b.onclick=function(){gq.value='';draw();var t=document.getElementById('g-'+b.dataset.l);if(t)t.scrollIntoView({behavior:'smooth',block:'start'});};});
-}
-
-/* ---------- quiz ---------- */
-function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
-var qState=null, qPick=load('qpick','all');
-function showQuiz(){
-  var secs=S.filter(function(s){return GF.quiz.some(function(q){return q.s===s.id;});});
-  var opts='<option value="all">All sections</option>'+secs.map(function(s){return '<option value="'+s.id+'"'+(qPick===s.id?' selected':'')+'>'+esc(s.title)+'</option>';}).join('');
-  view('<header class="head"><h1>Quiz</h1><p>Ten questions at a time, including step-order questions.</p></header><label class="label" for="qsec" style="display:block">Section</label><select class="field" id="qsec" style="margin-top:0">'+opts+'</select><div id="qz"></div>');
-  var sel=document.getElementById('qsec'); sel.onchange=function(){qPick=sel.value;save('qpick',qPick);start();};
-  start();
-}
-function start(){
-  var pool=GF.quiz.filter(function(q){return qPick==='all'||q.s===qPick;});
-  qState={qs:shuffle(pool).slice(0,10),i:0,score:0};
-  ask();
-}
-function ask(){
-  var box=document.getElementById('qz'); if(!box)return;
-  var st=qState, q=st.qs[st.i];
-  if(!q){box.innerHTML='<div class="qcard"><p class="label">Result</p><div class="score">'+st.score+' / '+st.qs.length+'</div><p>'+(st.score===st.qs.length?'Perfect score.':st.score>=st.qs.length*0.7?'Solid. Review the ones you missed.':'Keep studying the sections you missed, then try again.')+'</p><button class="next" id="again">New quiz</button></div>';
-    document.getElementById('again').onclick=start;return;}
-  var meta='<div class="qmeta"><span>Question '+(st.i+1)+' of '+st.qs.length+'</span><span>Score '+st.score+'</span></div>';
-  if(q.type==='order'){
-    var picked=[], opts=shuffle(q.steps);
-    box.innerHTML='<div class="qcard">'+meta+'<p class="qq">'+esc(q.q)+'</p><p class="ordhint">Tap the steps in order.</p><ol class="ord" id="ord"></ol><div class="opts" id="opts">'+opts.map(function(o,i){return '<button data-i="'+i+'">'+esc(o)+'</button>';}).join('')+'</div><button class="ghost" id="undo">Undo last</button><div id="fb"></div></div>';
-    var ord=document.getElementById('ord');
-    function draw(){ord.innerHTML=picked.map(function(i){return '<li>'+esc(opts[i])+'</li>';}).join('');
-      box.querySelectorAll('#opts button').forEach(function(b){b.hidden=picked.indexOf(+b.dataset.i)>=0;});}
-    box.querySelectorAll('#opts button').forEach(function(b){b.onclick=function(){picked.push(+b.dataset.i);draw();if(picked.length===opts.length)check();};});
-    document.getElementById('undo').onclick=function(){picked.pop();draw();};
-    function check(){
-      var ok=true;ord.querySelectorAll('li').forEach(function(li,n){var r=opts[picked[n]]===q.steps[n];if(!r)ok=false;li.className=r?'right':'wrong';});
-      document.getElementById('undo').hidden=true;
-      if(ok)st.score++;
-      document.getElementById('fb').innerHTML='<div class="fb '+(ok?'ok':'no')+'"><b>'+(ok?'Correct order':'Correct order is')+'</b>'+(ok?'':'<ol>'+q.steps.map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ol>')+'</div><button class="next" id="nx">Next question</button>';
-      document.getElementById('nx').onclick=function(){st.i++;ask();};
-    }
-    return;
-  }
-  var order=shuffle(q.a.map(function(_,i){return i;}));
-  box.innerHTML='<div class="qcard">'+meta+'<p class="qq">'+esc(q.q)+'</p><div class="opts">'+order.map(function(i){return '<button data-i="'+i+'">'+esc(q.a[i])+'</button>';}).join('')+'</div><div id="fb"></div></div>';
-  box.querySelectorAll('.opts button').forEach(function(b){b.onclick=function(){
-    var pick=+b.dataset.i, ok=pick===q.c; if(ok)st.score++;
-    box.querySelectorAll('.opts button').forEach(function(x){x.disabled=true;if(+x.dataset.i===q.c)x.classList.add('right');else if(x===b)x.classList.add('wrong');});
-    document.getElementById('fb').innerHTML='<div class="fb '+(ok?'ok':'no')+'"><b>'+(ok?'Correct':'Not quite — answer: '+esc(q.a[q.c]))+'</b>'+esc(q.e||'')+'</div><button class="next" id="nx">'+(st.i+1<st.qs.length?'Next question':'See score')+'</button>';
-    document.getElementById('nx').onclick=function(){st.i++;ask();};
-  };});
 }
 
 /* ---------- delegated navigation ---------- */

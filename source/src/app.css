@@ -57,7 +57,7 @@ button{cursor:pointer}
 .stamp small{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.18em;margin-top:.25rem}
 .mark p{margin:.8rem 0 0;color:var(--muted);max-width:34rem}
 
-.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;padding-block:.4rem 1rem}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;padding-block:.4rem 1rem}
 .tools button{border:1px solid var(--line);background:var(--surface);border-radius:.6rem;padding:.7rem .3rem;font-weight:700;font-size:.85rem;display:flex;flex-direction:column;align-items:center;gap:.25rem;min-height:4.2rem}
 .tools svg{width:1.5rem;height:1.5rem;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 

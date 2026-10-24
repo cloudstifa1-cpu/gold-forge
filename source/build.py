@@ -7,7 +7,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, 'src')
 DIST = os.path.dirname(ROOT)  # repo root (served by GitHub Pages)
 ART = os.path.join(ROOT, 'artifact')
-VERSION = 'gf-v2'
+VERSION = 'gf-v3'
 
 def read(p):
     with open(p, encoding='utf-8') as f:
@@ -35,7 +35,7 @@ BODY = '''<div class="bar"><div class="wrap">
 '''
 
 SITE = 'https://cloudstifa1-cpu.github.io/gold-forge/'
-DESC = 'Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, glossary, and quizzes.'
+DESC = 'Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, and a glossary.'
 HEAD_COMMON = ('<title>Gold Forge</title>\n'
                '<meta name="claude:viewport-fit-sides" content="cover">\n'
                '<meta name="description" content="' + DESC + '">\n')
@@ -70,7 +70,7 @@ manifest = {
     "name": "Gold Forge", "short_name": "Gold Forge",
     "id": "./", "lang": "en", "dir": "ltr", "description": DESC,
     "categories": ["education", "books", "reference"],
-    "screenshots": [{"src": "screenshots/%d.png" % i, "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow"} for i in range(1, 6)],
+    "screenshots": [{"src": "screenshots/%d.png" % i, "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow"} for i in range(1, 5)],
     "start_url": "./", "scope": "./", "display": "standalone", "orientation": "portrait",
     "background_color": "#14120E", "theme_color": "#1E1B16",
     "icons": [
@@ -136,7 +136,7 @@ icon(180, 0.12, os.path.join(DIST, 'apple-touch-icon.png'))
 
 readme = '''# Gold Forge
 
-Metallurgy study app: assaying (fire assay), gold recovery from mine to 99.99% bar, extraction and smelting of every major metal, chemistry, alloys, heat treatment, forming, corrosion, safety, glossary, and quizzes.
+Metallurgy study app: assaying (fire assay), gold recovery from mine to 99.99% bar, extraction and smelting of every major metal, chemistry, alloys, heat treatment, forming, corrosion, safety, and a glossary.
 
 Works on Android, iPhone, and desktop. Installs to the home screen and works offline after the first visit.
 

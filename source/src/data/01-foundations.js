@@ -30,7 +30,6 @@ Most real plants use more than one. A typical gold plant is hydromet (cyanide le
 - Use **Search** to find any term, metal, mineral, or formula.
 - **A−** and **A+** at the top change the text size. Your choice is remembered.
 - **Glossary** has short definitions of every term.
-- **Quiz** tests you, including putting process steps in the right order.
 - **Saved** keeps topics you star for quick review.
 - Works with no signal once it has been opened one time.
 

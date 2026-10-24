@@ -1,1 +1,1 @@
-window.GF={sections:[],glossary:[],quiz:[],sec:function(s){this.sections.push(s);}};
+window.GF={sections:[],glossary:[],sec:function(s){this.sections.push(s);}};

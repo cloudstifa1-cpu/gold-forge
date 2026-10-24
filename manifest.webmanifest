@@ -4,7 +4,7 @@
   "id": "./",
   "lang": "en",
   "dir": "ltr",
-  "description": "Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, glossary, and quizzes.",
+  "description": "Free metallurgy study app: fire assaying, gold recovery from mine to 99.99% bar, smelting and refining of 34 metals, chemistry, alloys, heat treatment, corrosion, and a glossary.",
   "categories": [
     "education",
     "books",
@@ -31,12 +31,6 @@
     },
     {
       "src": "screenshots/4.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "screenshots/5.png",
       "sizes": "1080x1920",
       "type": "image/png",
       "form_factor": "narrow"
