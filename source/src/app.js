@@ -55,6 +55,7 @@ function route(){
   if(p[0]==='search')return showSearch();
   if(p[0]==='glossary')return showGlossary();
   if(p[0]==='saved')return showSaved();
+  if(p[0]==='credits')return showCredits();
   showHome();
 }
 
@@ -72,11 +73,11 @@ function showHome(){
   '<button data-go="glossary">'+ICON.glossary+'Glossary</button>'+
   '<button data-go="saved">'+ICON.saved+'Saved</button></div>'+
   '<p class="label">Sections</p><ul class="rows">'+rows+'</ul>'+
-  '<div class="foot">A study reminder. Follow your instructor, your lab procedures, and each chemical\'s safety data sheet. Values are typical and rounded. <a href="privacy.html" style="color:inherit">Privacy</a></div>');
+  '<div class="foot">A study reminder. Follow your instructor, your lab procedures, and each chemical\'s safety data sheet. Values are typical and rounded. <a href="privacy.html" style="color:inherit">Privacy</a> · <a href="#credits" style="color:inherit">Photo credits</a></div>');
 }
 
 function showSection(s){
-  var rows=s.topics.map(function(t,i){return '<li><button data-go="t.'+s.id+'.'+i+'"><span class="tx"><span class="tt">'+esc(t.t)+'</span></span><span class="ch">›</span></button></li>';}).join('');
+  var rows=s.topics.map(function(t,i){var im=imgsFor(s.id+'.'+i)[0];return '<li><button data-go="t.'+s.id+'.'+i+'">'+(im?'<img class="thumb" src="'+im.f+'" alt="" loading="lazy" decoding="async">':'')+'<span class="tx"><span class="tt">'+esc(t.t)+'</span></span><span class="ch">›</span></button></li>';}).join('');
   view('<header class="head"><button class="crumb" data-go="home">Section '+(s.n+1)+'</button><h1>'+esc(s.title)+'</h1><p>'+esc(s.sub)+'</p></header><ul class="rows" style="margin-top:1rem">'+rows+'</ul><div style="height:2rem"></div>');
 }
 
@@ -92,7 +93,7 @@ function showTopic(s,i){
     (next?'<button data-go="t.'+s.id+'.'+(i+1)+'"><small>Next ›</small><span>'+esc(next.t)+'</span></button>':'<button data-go="s.'+s.id+'"><small>Done</small><span>Back to '+esc(s.title)+'</span></button>')+'</nav>';
   view('<header class="head"><button class="crumb" data-go="s.'+s.id+'">'+esc(s.title)+'</button><h1>'+esc(t.t)+'</h1>'+
     '<div class="tbar"><button class="star" id="star" aria-pressed="'+isSaved(k)+'">'+(isSaved(k)?'★ Saved':'☆ Save')+'</button></div></header>'+
-    '<article class="art">'+render(t.b)+'</article>'+pg);
+    gallery(k)+'<article class="art">'+render(t.b)+'</article>'+pg);
   document.getElementById('star').onclick=function(){toggleSave(k);this.setAttribute('aria-pressed',isSaved(k));this.textContent=isSaved(k)?'★ Saved':'☆ Save';};
 }
 
@@ -139,8 +140,32 @@ function showGlossary(){
   app.querySelectorAll('[data-l]').forEach(function(b){b.onclick=function(){gq.value='';draw();var t=document.getElementById('g-'+b.dataset.l);if(t)t.scrollIntoView({behavior:'smooth',block:'start'});};});
 }
 
+
+/* ---------- photos ---------- */
+var IMG=GF.images||{}, TIMG=GF.topicImages||{};
+function imgsFor(k){return (TIMG[k]||[]).map(function(id){var o=IMG[id];if(o)o.id=id;return o;}).filter(Boolean);}
+function gallery(k){
+  var L=imgsFor(k); if(!L.length)return '';
+  return '<div class="gal'+(L.length===1?' one':'')+'" role="list">'+L.map(function(o){return '<figure role="listitem"><button class="ph" data-img="'+o.id+'" aria-label="Enlarge photo: '+esc(o.c)+'"><img src="'+o.f+'" alt="'+esc(o.c)+'" loading="lazy" decoding="async"></button><figcaption>'+esc(o.c)+'</figcaption></figure>';}).join('')+'</div>'+(L.length>1?'<p class="galhint">Swipe for more photos · tap to enlarge</p>':'<p class="galhint">Tap photo to enlarge</p>');
+}
+var lb=null;
+function openPhoto(id){
+  var o=IMG[id]; if(!o)return;
+  if(!lb){lb=document.createElement('div');lb.className='lb';lb.setAttribute('role','dialog');lb.setAttribute('aria-modal','true');document.body.appendChild(lb);
+    lb.addEventListener('click',function(e){if(e.target===lb||e.target.closest('.lbx'))closePhoto();});}
+  lb.innerHTML='<button class="lbx" aria-label="Close photo">✕ Close</button><img src="'+o.f+'" alt="'+esc(o.c)+'"><div class="lbc"><b>'+esc(o.c)+'</b><span>Photo: '+esc(o.a||'Unknown')+' · '+esc(o.l)+' · <a href="'+esc(o.u)+'" target="_blank" rel="noopener">Source</a></span></div>';
+  lb.hidden=false; document.body.style.overflow='hidden'; lb.querySelector('.lbx').focus();
+}
+function closePhoto(){if(lb){lb.hidden=true;document.body.style.overflow='';}}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closePhoto();});
+window.addEventListener('hashchange',closePhoto);
+function showCredits(){
+  var ids=Object.keys(IMG).sort(function(a,b){return IMG[a].c.localeCompare(IMG[b].c);});
+  view('<header class="head"><h1>Photo Credits</h1><p>Photos come from Wikimedia Commons and are used under their free licenses. Thank you to every photographer.</p></header><ul class="hits">'+ids.map(function(id){var o=IMG[id];return '<li><a class="cr" href="'+esc(o.u)+'" target="_blank" rel="noopener"><img src="'+o.f+'" alt="" loading="lazy"><span><span class="ht">'+esc(o.c)+'</span><span class="hx">'+esc(o.a||'Unknown')+' · '+esc(o.l)+'</span></span></a></li>';}).join('')+'</ul>');
+}
+
 /* ---------- delegated navigation ---------- */
-app.addEventListener('click',function(e){var b=e.target.closest('[data-go]');if(b){e.preventDefault();go(b.dataset.go);}});
+app.addEventListener('click',function(e){var ph=e.target.closest('[data-img]');if(ph){openPhoto(ph.dataset.img);return;}var b=e.target.closest('[data-go]');if(b){e.preventDefault();go(b.dataset.go);}});
 
 route();
 

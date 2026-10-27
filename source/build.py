@@ -7,7 +7,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, 'src')
 DIST = os.path.dirname(ROOT)  # repo root (served by GitHub Pages)
 ART = os.path.join(ROOT, 'artifact')
-VERSION = 'oa-v4'
+VERSION = 'oa-v5'
 
 def read(p):
     with open(p, encoding='utf-8') as f:
@@ -39,6 +39,15 @@ DESC = 'Free metallurgy study app: fire assaying, gold recovery from mine to 99.
 HEAD_COMMON = ('<title>Ore to Alloy</title>\n'
                '<meta name="claude:viewport-fit-sides" content="cover">\n'
                '<meta name="description" content="' + DESC + '">\n')
+
+# ---------- photos ----------
+IMGSRC = os.path.join(ROOT, 'img')
+IMGDST = os.path.join(DIST, 'img')
+IMGLIST = []
+if os.path.isdir(IMGSRC):
+    if os.path.isdir(IMGDST): shutil.rmtree(IMGDST)
+    shutil.copytree(IMGSRC, IMGDST)
+    IMGLIST = sorted('img/' + f for f in os.listdir(IMGDST))
 
 # ---------- PWA (full document) ----------
 os.makedirs(DIST, exist_ok=True)
@@ -85,7 +94,11 @@ with open(os.path.join(DIST, 'manifest.webmanifest'), 'w') as f:
 sw = '''const CACHE='%s';
 const CORE=['./','index.html','privacy.html','manifest.webmanifest','icon-192.png','icon-512.png','icon-maskable-512.png','apple-touch-icon.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()));});
-self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
+const IMGS=%s;
+self.addEventListener('activate',e=>{
+  // Save every photo for offline use in the background (doesn't block startup).
+  caches.open(CACHE).then(c=>IMGS.reduce((p,u)=>p.then(()=>c.match(u).then(r=>r||c.add(u).catch(()=>{}))),Promise.resolve()));
+  e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
 self.addEventListener('fetch',e=>{
   const req=e.request; if(req.method!=='GET')return;
   const url=new URL(req.url);
@@ -97,7 +110,7 @@ self.addEventListener('fetch',e=>{
     e.respondWith(caches.match(req).then(r=>r||fetch(req).then(n=>{const c=n.clone();caches.open(CACHE).then(x=>x.put(req,c));return n;})));
   }
 });
-''' % VERSION
+''' % (VERSION, json.dumps(IMGLIST))
 with open(os.path.join(DIST, 'sw.js'), 'w') as f:
     f.write(sw)
 open(os.path.join(DIST, '.nojekyll'), 'w').close()
