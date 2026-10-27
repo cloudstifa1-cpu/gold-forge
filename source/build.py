@@ -7,7 +7,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, 'src')
 DIST = os.path.dirname(ROOT)  # repo root (served by GitHub Pages)
 ART = os.path.join(ROOT, 'artifact')
-VERSION = 'oa-v6'
+VERSION = 'oa-v7'
 
 def read(p):
     with open(p, encoding='utf-8') as f:

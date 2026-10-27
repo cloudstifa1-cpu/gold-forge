@@ -167,3 +167,36 @@ button{cursor:pointer}
 .cr img{width:3.2rem;height:3.2rem;object-fit:cover;border-radius:.4rem;flex:none}
 .cr .ht{display:block;font-weight:700}
 .cr .hx{display:block;color:var(--muted);font-size:.8rem;overflow-wrap:anywhere}
+
+/* Diagrams */
+.dia{margin:1rem 0 .4rem;padding:.6rem;border:1px solid var(--line);border-radius:.6rem;background:var(--surface);overflow-x:auto}
+.dia svg{display:block;width:100%;height:auto;min-width:300px}
+.dia figcaption{font-size:.85rem;margin-top:.4rem;color:var(--fg)}
+.dia text{fill:var(--fg);font-family:var(--f-body)}
+.dia .mu{fill:var(--muted)}
+.dia .ln{fill:none;stroke:var(--fg);stroke-width:1.4}
+.dia .ln2{fill:none;stroke:var(--fg);stroke-width:2.4}
+.dia .bx{fill:var(--sunk);stroke:var(--fg);stroke-width:1.4}
+.dia .gdf{fill:var(--gold)} .dia .gdt{fill:var(--gold)}
+.dia .slf{fill:var(--slag)}
+.dia .pb{fill:#6C7279} .dia .ag{fill:#D8DCE0;stroke:var(--gold);stroke-width:2}
+.dia .cupel{fill:#E9E4D6;stroke:var(--fg)}
+.dia .acid{fill:var(--slag-soft);stroke:none}
+.dia .acid2{stroke:var(--slag);stroke-width:10;stroke-linecap:round}
+.dia .fe{fill:#E8742A}
+.dia .atom{fill:var(--slag);stroke:var(--surface);stroke-width:1}
+.dia .atom2{fill:var(--gold);stroke:var(--surface);stroke-width:1}
+.dia .froth{fill:var(--gold-soft)}
+.dia .bub{fill:none;stroke:var(--slag);stroke-width:1.5}
+.dia .imp{fill:#B87333;stroke:var(--fg)} .dia .inert{fill:#8C939A;stroke:var(--fg)} .dia .cath{fill:#D9824A;stroke:var(--fg)}
+.dia .slime{stroke:var(--gold);stroke-width:5;stroke-linecap:round}
+.dia .liner{stroke:var(--fg);stroke-width:4}
+.dia .orepile{fill:var(--sunk);stroke:var(--fg);stroke-width:1.4}
+.dia .mu-f{fill:var(--muted)}
+.dia .drop{stroke:var(--slag);stroke-width:3;stroke-linecap:round}
+.dia .stop-w{stop-color:var(--warn)} .dia .stop-o{stop-color:var(--ok)}
+.dia .wt{fill:var(--warn)} .dia .okt{fill:var(--ok)}
+.dia .wbar{fill:#B3361F} .dia .midbar{fill:var(--sunk);stroke:var(--line)} .dia .okbar{fill:#2E8B4A}
+.dia .mbar{fill:var(--slag)}
+.dia .curve{fill:none;stroke:var(--gold);stroke-width:3}
+.dia .wdf{fill:var(--warn)}

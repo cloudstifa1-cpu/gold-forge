@@ -145,6 +145,10 @@ function showGlossary(){
 var IMG=GF.images||{}, TIMG=GF.topicImages||{};
 function imgsFor(k){return (TIMG[k]||[]).map(function(id){var o=IMG[id];if(o)o.id=id;return o;}).filter(Boolean);}
 function gallery(k){
+  var DG=(GF.topicDiagrams||{})[k]||[], dh=DG.map(function(id){var d=GF.diagrams[id];return d?'<figure class="dia">'+d.s+'<figcaption>'+esc(d.c)+'</figcaption></figure>':'';}).join('');
+  return dh+photos(k);
+}
+function photos(k){
   var L=imgsFor(k); if(!L.length)return '';
   return '<div class="gal'+(L.length===1?' one':'')+'" role="list">'+L.map(function(o){return '<figure role="listitem"><button class="ph" data-img="'+o.id+'" aria-label="Enlarge photo: '+esc(o.c)+'"><img src="'+o.f+'" alt="'+esc(o.c)+'" loading="lazy" decoding="async"></button><figcaption>'+esc(o.c)+'</figcaption></figure>';}).join('')+'</div>'+(L.length>1?'<p class="galhint">Swipe for more photos · tap to enlarge</p>':'<p class="galhint">Tap photo to enlarge</p>');
 }
